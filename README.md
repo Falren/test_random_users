@@ -29,7 +29,7 @@
 
 ### Returns a list of people by name
 * use GET:
-* path `http://127.0.0.1:3000/api/v1/people?name='Linda'`
+* path `http://127.0.0.1:3000/api/v1/people?name=Linda`
 * params: name
   
 ### Returns person family by id
