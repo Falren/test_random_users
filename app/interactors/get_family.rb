@@ -6,7 +6,7 @@ class GetFamily
   def call
     return context.user = user if user
 
-    context.fail!(error: 'No person found')
+    context.fail!(error: 'No person was found')
   end
 
   private

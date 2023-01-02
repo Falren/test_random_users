@@ -10,12 +10,16 @@ class PopulateDb
 
         create_family(child)
       end
-      context.family = context.family[:children].without_both_parents
+
+      context.children_without_both_parents = children_without_both_parents
+      context.fail! if children_without_both_parents.blank?
     end
 
     private
 
-    attr_reader :params
+    def children_without_both_parents
+      context.family[:children].without_both_parents
+    end
 
     def create_family(child)
       parent_ids = context.family[:adults][child.data['nat']].slice!(0..1).pluck(:id)

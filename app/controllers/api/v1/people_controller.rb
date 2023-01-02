@@ -2,6 +2,9 @@
 
 class Api::V1::PeopleController < ApplicationController
   def index
-    render json: User.filter_by_name(params[:name])
+    result = GetPeopleByName.call(name: params[:name])
+    return render json: result.people if result.success?
+
+    render json: result.error, status: :not_found
   end
 end

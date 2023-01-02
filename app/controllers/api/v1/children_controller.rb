@@ -1,4 +1,4 @@
-class Api::V1::ParentsController < ApplicationController
+class Api::V1::ChildrenController < ApplicationController
   def index
     result = GetPeople.call(country: params[:country], generation: 'children')
     return render json: { error: result.error }, status: :not_found if result.failure?

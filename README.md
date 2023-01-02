@@ -51,9 +51,9 @@
 ## You can find list of countries here:
 * https://randomuser.me/documentation
 
-## Rspec tests
+## Run Rspec
 
-`rspec spec/models/family_spec.rb`
+`rspec`
 
 ## Assumptions
 

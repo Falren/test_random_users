@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_many :parents, through: :ancestors, source: :parent
 
   scope :random, -> { order(Arel.sql('RANDOM()')) }
-  scope :filter_by_name, ->(name) { where("lower(data -> 'name' ->> 'first') LIKE ?", "%#{name.downcase}%") }
+  scope :filter_by_name, ->(name) { where("lower(data -> 'name' ->> 'first') LIKE ?", "%#{name}%") }
   scope :filter_children_by_country, lambda { |country|
     where(
       "lower(data ->> 'nat') LIKE ? AND data -> 'dob' ->> 'age' < ?",
