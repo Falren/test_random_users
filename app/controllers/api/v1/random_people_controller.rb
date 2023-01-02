@@ -4,7 +4,7 @@ class Api::V1::RandomPeopleController < ApplicationController
   def show
     return render json: random_person if random_person
 
-    render json: { error: 'No parents in this country' }, status: :not_found
+    render json: { error: 'No person was found' }, status: :not_found
   end
 
   private

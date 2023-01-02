@@ -11,7 +11,9 @@ class AddIndexToUsers < ActiveRecord::Migration[7.0]
   def down
     disable_extension('pg_trgm')
     disable_extension('btree_gin')
-    remove_index(:users, name: 'users_data_nat_idx')
-    remove_index(:users, name: 'users_data_name_first_idx')
+    execute <<-SQL
+      DROP INDEX IF EXISTS users.users_data_nat_idx;
+      DROP INDEX IF EXISTS users.users_data_name_first_idx;
+    SQL
   end
 end

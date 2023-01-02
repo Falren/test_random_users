@@ -31,10 +31,4 @@ class User < ActiveRecord::Base
   scope :without_both_parents, lambda {
     left_outer_joins(:ancestors).group(:id).having('count(*) < ?', MAX_NUMBER_OF_PARENTS_PER_CHILD)
   }
-
-  class << self
-    def available_countries
-      pluck(Arel.sql("(data->'nat')")).uniq
-    end
-  end
 end
