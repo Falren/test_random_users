@@ -1,24 +1,60 @@
-# README
+# API application on Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to use
 
-Things you may want to cover:
+### Use git clone to clone repository
 
-* Ruby version
+`git clone https://github.com/Falren/test_random_users.git`
 
-* System dependencies
+### Run bundle (Gemfile)
+  
+`bundle`
 
-* Configuration
+### Run:
+  
+`rails db:create`
 
-* Database creation
+`rails db:migrate`
 
-* Database initialization
+### Populate the DB
+`rails db:seed`
 
-* How to run the test suite
+### Start the server
 
-* Services (job queues, cache servers, search engines, etc.)
+`rails s`
 
-* Deployment instructions
+### Returns random person
+* use GET:
+* path `http://127.0.0.1:3000/api/v1/random_person`
 
-* ...
+### Returns a list of people by name
+* use GET:
+* path `http://127.0.0.1:3000/api/v1/people?name='Linda'`
+* params: name
+  
+### Returns person family by id
+* use GET:
+* path `http://127.0.0.1:3000/api/v1/family?id=1`
+* params: id
+
+
+### Returns all the children in the country:
+* use GET:
+* path `http://127.0.0.1:3000/api/v1/children?country=de`
+* params: country
+
+### Returns all the parents in the country:
+* use GET:
+* path `http://127.0.0.1:3000/api/v1/parents?country=de`
+* params: country
+
+## You can find list of countries here:
+* https://randomuser.me/documentation
+
+## Rspec tests
+
+`rspec spec/models/family_spec.rb`
+
+## Assumptions
+
+The random user api doesn't provide collection of users under 20 years old, we create them by putting registration age instead
