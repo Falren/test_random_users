@@ -11,6 +11,7 @@ class CreateFamilyService
 
       create_family(child)
     end
+    params[:children].without_both_parents
   end
 
   private

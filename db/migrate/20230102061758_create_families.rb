@@ -6,5 +6,7 @@ class CreateFamilies < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :families, %i[parent_id child_id], unique: true
+    add_index :families, :child_id
   end
 end
