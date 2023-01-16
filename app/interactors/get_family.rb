@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class GetFamily
-  include Interactor
-
+class GetFamily < BaseInteractor
   def call
     return context.user = user if user
 

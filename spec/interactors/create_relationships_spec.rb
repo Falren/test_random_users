@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-describe PopulateDb::CreateFamily do
-  subject(:context) { described_class.call(family: { children: children, adults: parents }) }
+describe PopulateDb::CreateRelationships do
+  subject(:context) { described_class.call(people: { children: children, adults: parents }) }
   let(:parents) do
     create_list(:user, 5, :parent)
       .map(&:attributes)
@@ -12,7 +12,7 @@ describe PopulateDb::CreateFamily do
   end
 
   describe '.call' do
-    context 'when without parents' do
+    context 'without parents' do
       let(:children) { User.where(id: create_list(:user, 5, :child)) }
 
       it 'succeeds' do
@@ -20,7 +20,7 @@ describe PopulateDb::CreateFamily do
       end
     end
 
-    context 'when with parents' do
+    context 'with parents' do
       let(:children) { User.where(id: create(:user, :child)) }
 
       it 'fails' do

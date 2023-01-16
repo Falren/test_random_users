@@ -8,6 +8,7 @@ FactoryBot.define do
             "last": Faker::Name.last_name
           },
           "dob": { "age": rand(1...20) },
+          "registered": { "age": rand(1...20) },
           "nat": 'US'
         }.as_json
       end
@@ -20,6 +21,7 @@ FactoryBot.define do
             "last": Faker::Name.last_name
           },
           "dob": { "age": 30 },
+          "registered": { "age": rand(30..40) },
           "nat": 'US'
         }.as_json
       end

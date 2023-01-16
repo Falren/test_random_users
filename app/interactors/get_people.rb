@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class GetPeople
-  include Interactor
-
+class GetPeople < BaseInteractor
   def call
     return context.fail!(error: "No #{context.generation} available in this country") if available_people.blank?
 

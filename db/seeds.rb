@@ -6,16 +6,19 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-params = { parents_only: false, url: 'https://randomuser.me/api/?results=200' }
+RANDOM_USER_URL = 'https://randomuser.me/api/'.freeze
+
+params = { need_parents_only: false, url: "#{RANDOM_USER_URL}?results=200" }
 
 loop do
-  families = PopulateDb.call(params)
-  break if families.failure?
+  interaction = PopulateDb.call(params)
+  break puts(interaction.message) if interaction.failure?
 
-  country_list = families.children_without_both_parents.pluck(Arel.sql("data->'nat'")).join(',')
+  puts("Children without both parents: #{interaction.children_without_both_parents.values.size}")
+  country_list = interaction.children_without_both_parents.pluck(Arel.sql("data->'nat'")).join(',')
   params = {
-    parents_only: true,
-    url: "https://randomuser.me/api/?results=50&nat=#{country_list}",
-    children_without_both_parents: families.children_without_both_parents
+    need_parents_only: true,
+    url: "#{RANDOM_USER_URL}?results=50&nat=#{country_list}",
+    children_without_both_parents: interaction.children_without_both_parents
   }
 end

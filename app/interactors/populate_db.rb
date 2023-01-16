@@ -3,5 +3,8 @@
 class PopulateDb
   include Interactor::Organizer
 
-  organize PopulateDb::ImportPeople, PopulateDb::CreateFamily
+  organize PopulateDb::FetchPeople,
+           PopulateDb::InsertPeople,
+           PopulateDb::GroupPeople,
+           PopulateDb::CreateRelationships
 end

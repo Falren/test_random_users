@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class GetRandomPerson
-  include Interactor
-
+class GetRandomPerson < BaseInteractor
   def call
     return context.fail!(error: 'No person was found') unless random_person
 
