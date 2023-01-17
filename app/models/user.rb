@@ -16,16 +16,16 @@ class User < ActiveRecord::Base
   scope :filter_by_name, ->(name) { where("lower(data -> 'name' ->> 'first') LIKE ?", "%#{name}%") }
   scope :filter_children_by_country, lambda { |country|
     where(
-      "lower(data ->> 'nat') LIKE ? AND data -> 'dob' ->> 'age' < ?",
+      "lower(data ->> 'nat') LIKE ? AND (data -> 'dob' ->> 'age')::int < ?",
       "%#{country.downcase}%",
-      CHILD_MAX_AGE.to_s
+      CHILD_MAX_AGE
     )
   }
   scope :filter_parents_by_country, lambda { |country|
     where(
-      "lower(data ->> 'nat') LIKE ? AND data -> 'dob' ->> 'age' >= ?",
+      "lower(data ->> 'nat') LIKE ? AND (data -> 'dob' ->> 'age')::int >= ?",
       "%#{country.downcase}%",
-      PARENT_MIN_AGE.to_s
+      PARENT_MIN_AGE
     )
   }
   scope :without_both_parents, lambda {
