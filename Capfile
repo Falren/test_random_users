@@ -40,7 +40,6 @@ Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
 require 'capistrano/rails'
 require 'capistrano/passenger'
 require 'capistrano/rbenv'
-require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 set :rbenv_type, :user
 set :rbenv_ruby, '3.0.0'
