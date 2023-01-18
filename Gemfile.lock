@@ -236,6 +236,7 @@ DEPENDENCIES
   pry
   puma (~> 5.0)
   rails (~> 7.0.4)
+  rake
   rspec-rails
   tzinfo-data
 
