@@ -34,7 +34,7 @@ lock '~> 3.17.1'
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-set :application, 'test_rails'
+set :application, 'test_random_users'
 set :repo_url, 'git@github.com:Falren/test_random_users.git'
 set :branch, "main"
 
