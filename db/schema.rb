@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_02_110908) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_135046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_trgm"
@@ -23,6 +23,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_02_110908) do
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_families_on_child_id"
     t.index ["parent_id", "child_id"], name: "index_families_on_parent_id_and_child_id", unique: true
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
