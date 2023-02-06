@@ -47,3 +47,4 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 # Only keep the last 5 releases to save disk space
 set :keep_releases, 5
 set :rbenv_prefix, '/usr/bin/rbenv exec'
+set :passenger_environment_variables, { port: 3000 }
