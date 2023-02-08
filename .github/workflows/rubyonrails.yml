@@ -39,13 +39,5 @@ jobs:
           bundle exec rails db:create
           bundle exec rails db:migrate
           RAILS_ENV=test rspec
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Deploy to production
-        env:
-          RAILS_ENV: production
-        run: |
           cap production deploy
 
