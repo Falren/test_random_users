@@ -57,4 +57,14 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/github-actions
           bundle exec cap production deploy
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'Falren',
+              repo: 'vue-test-sockets',
+              workflow_id: 'main.yml',
+              ref: 'main'
+            })
 
