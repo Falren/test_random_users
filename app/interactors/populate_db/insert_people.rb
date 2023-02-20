@@ -20,10 +20,12 @@ class PopulateDb
 
     def correct_children_dob
       context.fetched_people['results'].filter_map do |person|
-        next if person['dob']['age'] <= User::PARENT_MIN_AGE && context.need_parents_only
-
-        { data: transform_person_dob(person) }
+        { data: transform_person_dob(person) } if child_passable(person)
       end
+    end
+
+    def child_passable(person)
+      person['dob']['age'] <= User::PARENT_MIN_AGE && context.need_parents_only
     end
 
     def transform_person_dob(person)

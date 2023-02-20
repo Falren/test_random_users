@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::PeopleController < ApplicationController
   def index
     result = GetPeopleByName.call(name: params[:name])

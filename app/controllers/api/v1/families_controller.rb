@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Api::V1::FamiliesController < ApplicationController
   def show
     result = GetFamily.call(id: params[:id])

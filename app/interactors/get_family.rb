@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GetFamily < BaseInteractor
   def call
     return context.user = user if user

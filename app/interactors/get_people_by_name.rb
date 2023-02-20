@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GetPeopleByName < BaseInteractor
   def call
     return context.fail!(error: 'No name has been specified') if context.name.blank?
