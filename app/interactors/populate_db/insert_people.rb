@@ -20,7 +20,7 @@ class PopulateDb
 
     def correct_children_dob
       context.fetched_people['results'].filter_map do |person|
-        { data: transform_person_dob(person) } if child_passable(person)
+        { data: transform_person_dob(person) } unless child_passable(person)
       end
     end
 
